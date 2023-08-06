@@ -10,7 +10,7 @@
                         <h4 class="text-center text-success font-weight-bold">{{ Session::get('success') }}</h4>
                         <div class="table-responsive">
 
-                            {{-- <form action="{{ route('admin.show-student',$id1,$id2,$id3) }}" method="GET"> --}}
+                            <form action="{{ route('admin.show-student') }}" method="POST">
                             @csrf
                                     <div class="form-group row">
 
@@ -18,7 +18,7 @@
                                         <div class="col-sm-9">
                                             <select class="form-control" name="school_id">
                                                 <option>---------Select School Name---------</option>
-                                                @foreach($student as $category)
+                                                @foreach($school_id as $category)
                                                     <option value="{{ $category->id }}">{{ $category->school_name }}</option>
                                                 @endforeach
                                             </select>
@@ -30,7 +30,7 @@
                                         <div class="col-sm-9">
                                             <select class="form-control" name="class_id">
                                                 <option>---------Select Class Name---------</option>
-                                                @foreach($student as $brand)
+                                                @foreach($class_id as $brand)
                                                     <option value="{{ $brand->id }}">{{ $brand->class_name }}</option>
                                                 @endforeach
                                             </select>
@@ -43,7 +43,7 @@
                                         <div class="col-sm-9">
                                             <select class="form-control" name="section_id">
                                                 <option>---------Select Section Name---------</option>
-                                                @foreach($student as $sec)
+                                                @foreach($section_id as $sec)
                                                     <option value="{{ $sec->id }}">{{ $sec->section_name }}</option>
                                                 @endforeach
                                             </select>
@@ -53,8 +53,8 @@
 
 
                                 {{-- <a href="{{ route('admin.show-student',['id1'=>$id1,'id2'=>$id2, 'id3'=>$id3]) }}" class="btn btn-primary">Show Student</a> --}}
-                                {{-- <input type="submit" class="btn btn-primary" value="Submit"> --}}
-                            </form>
+                                <input type="submit" class="btn btn-primary" value="Submit">
+                             </form>
                         </div>
 
                     </div>

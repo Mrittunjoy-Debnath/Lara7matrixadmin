@@ -31,6 +31,7 @@
                     <ul aria-expanded="false" class="collapse  first-level">
                         <li class="sidebar-item"><a href="{{ route('admin.add-student') }}" class="sidebar-link"><i class="mdi mdi-note-outline"></i><span class="hide-menu"> Add Student </span></a></li>
                         <li class="sidebar-item"><a href="{{ route('admin.manage-student') }}" class="sidebar-link"><i class="mdi mdi-note-plus"></i><span class="hide-menu"> Manage Student </span></a></li>
+                        <li class="sidebar-item"><a href="{{ route('admin.find-student') }}" class="sidebar-link"><i class="mdi mdi-note-plus"></i><span class="hide-menu"> Find Student </span></a></li>
                     </ul>
                 </li>
 

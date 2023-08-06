@@ -65,11 +65,17 @@ Route::group(['as'=>'admin.','prefix'=>'admin','middleware' =>'is_admin'],functi
         Route::get('/addstudent','Admin\StudentController@addStudent')->name('add-student');
         Route::post('/savestudent','Admin\StudentController@saveStudent')->name('save-student');
         Route::get('/managestudent','Admin\StudentController@manageStudent')->name('manage-student');
-        // Route::get('/showstudent','Admin\StudentController@showStudent')->name('show-student');
-        Route::get('/showstudent/{$id1}/{$id2}/{$id3}','Admin\StudentController@showStudent')->name('show-student');
+        Route::post('/showstudent','Admin\StudentController@showStudent')->name('show-student');
+        // Route::get('/showstudent/{$id1}/{$id2}/{$id3}','Admin\StudentController@showStudent')->name('show-student');
         // Route::get('/unpublishedsection/{id}','Admin\SectionController@unpublishedSection')->name('unpublished-section');
         // Route::get('/publishedsection/{id}','Admin\SectionController@publishedSection')->name('published-section');
         // Route::get('/editsection/{id}','Admin\SectionController@editSection')->name('edit-section');
         // Route::post('/updatesection/{id}','Admin\SectionController@updateSection')->name('update-section');
         // Route::get('/deletesection/{id}','Admin\SectionController@deleteSection')->name('delete-section');
+
+
+        Route::get('/findstudent','Admin\StudentController@findStudent')->name('find-student');
+        Route::get('/showclass6secA','Admin\StudentController@showClass6SecA')->name('show-class6-secA');
+        // Route::get('/paymentstudent/{$id}','Admin\StudentController@paymentStudent')->name('payment-student');
+
 });

@@ -56,18 +56,20 @@ class StudentController extends Controller
 
     public function manageStudent()
     {
-        // $student = Student::all();
+        // $student = DB::table('students')
+        // ->join('schools','students.school_id','=','schools.id')
+        // ->join('class_models','students.class_id','=','class_models.id')
+        // ->join('sections','students.section_id','=','sections.id')
+        // ->select('students.*','schools.school_name','class_models.class_name','sections.section_name')
+        // ->get();
 
-        $student = DB::table('students')
-        ->join('schools','students.school_id','=','schools.id')
-        ->join('class_models','students.class_id','=','class_models.id')
-        ->join('sections','students.section_id','=','sections.id')
-        ->select('students.*','schools.school_name','class_models.class_name','sections.section_name')
-        // ->select('students.*')->where('students.school_id','=','schools.id' , 'students.class_id','=','class_models.id' , 'students.section_id','=','sections.id')
-        ->get();
-
+        $school_id = School::all();
+        $class_id = ClassModel::all();
+        $section_id = Section::all();
         return view('admin.student.managestudent',[
-            'student' => $student,
+            'school_id' => $school_id,
+            'class_id' => $class_id,
+            'section_id' => $section_id,
         ]);
 
 
@@ -75,17 +77,23 @@ class StudentController extends Controller
     }
 
 
-    public function showStudent($id1,$id2,$id3)
+    public function showStudent(Request $request)
     {
+        $this->validate($request,[
+            'school_id' => 'required',
+            'class_id' => 'required',
+            'section_id' => 'required',
+
+        ]);
 
         // $school_id = $request->school_id;
         // $class_id = $request->class_id;
         // $section_id = $request->section_id;
 
-        $student = Student::where('school_id',$id1)
-                ->where('class_id',$id2)
-                ->where('section_id',$id3)
-                ->where('publication_status',1)
+        // $student = new Student();
+        $student = Student::where('school_id',$request->school_id)
+                ->where('class_id',$request->class_id)
+                ->where('section_id',$request->section_id)
                 ->get();
 
 
@@ -96,5 +104,24 @@ class StudentController extends Controller
         ]);
     }
 
+    public function findStudent(){
+        return view('admin.student.findstudent');
+    }
+
+    public function showClass6SecA()
+    {
+        $student = Student::where('class_id',1)
+        ->where('section_id',1)
+        ->where('publication_status',1)
+        ->get();
+        return view('admin.student.class6sectiona',[
+            'student'=>$student,
+        ]);
+    }
+
+    // public function paymentStudent($id)
+    // {
+
+    // }
 
 }
